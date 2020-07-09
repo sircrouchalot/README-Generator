@@ -36,7 +36,7 @@ inquirer
     {
       type: "list",
       message: "License: ",
-      choices: ["ICS", "MIT", "Apache", "GNU GPLv3"],
+      choices: ["MIT", "Apache", "GNU GPLv3"],
       name: "license",
     },
     {
@@ -52,8 +52,17 @@ inquirer
   ])
   .then(function (response) {
     const { project, description, installation, usage, contributing, tests, license, username, email } = response;
-    
+    var licenseImage = "";
+    if (license === "MIT") {
+      licenseImage = "https://img.shields.io/badge/license-MIT-green";
+    } else if (license === "Apache") {
+      licenseImage = "https://img.shields.io/badge/license-Apache-blue";
+    } else if (license === "GNU GPLv3") {
+      licenseImage = "https://img.shields.io/badge/license-GPL-blue";
+    }
+
     var readmeContent = `
+![License Image](${licenseImage})
 # ${project}
 
 ## Table of Contents
@@ -75,7 +84,7 @@ ${description}
 \`\`\`
 ${installation}
 \`\`\`
-    
+
 ## Usage
     
 ${usage}
@@ -87,18 +96,18 @@ ${contributing}
 ## Tests
 
 \`\`\`
-${tests}
-    
+${tests}  
 \`\`\`
+
 ## License
     
-${license}
+![License Image](${licenseImage})
     
 ## Questions
 
 Got Questions? Contact me here: 
 
-GitHub Username: ${username}
+[GitHub](http://github.com/${username})
 
 Email: ${email}
 `
