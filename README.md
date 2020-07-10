@@ -2,7 +2,7 @@
 
 ## Description
 
-Author: Alex Crouch
+Author: [Alex Crouch](https://github.com/sircrouchalot)
 
 Generates a README markdown file based on user inputs in the command line.
 
